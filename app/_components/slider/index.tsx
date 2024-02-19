@@ -8,36 +8,44 @@ const images = ["/slides/img1.jpg", "/slides/img2.png", "/slides/img3.jpg"];
 const length = images.length;
 
 const variants = {
-  initial: (direction: number) => ({
-    x: direction > 0 ? "100%" : "-100%",
-    opacity: 0,
-    scale: 0.8,
-    transition: {
-      x: { type: "spring", stiffness: 100, damping: 14 },
-      opacity: { duration: 0.8 },
-      scale: { type: "spring", stiffness: 100, damping: 14 },
-    },
-  }),
-  animate: {
-    x: 0,
-    opacity: 1,
-    scale: 1,
-    transition: {
-      x: { type: "spring", stiffness: 30, damping: 20 },
-      opacity: { duration: 1.2 },
-      scale: { type: "spring", stiffness: 30, damping: 20 },
-    },
+  initial: (direction: number) => {
+    return {
+      x: [direction > 0 ? "100%" : "-100%", direction > 0 ? "100%" : "-100%"],
+      opacity: 1,
+      scale: [0.9, 0.9],
+      transition: {
+        type: "ease-in-out",
+        duration: 2,
+      },
+    };
   },
-  exit: (direction: number) => ({
-    x: direction > 0 ? "-100%" : "100%",
-    opacity: 0,
-    scale: 0.8,
-    transition: {
-      x: { type: "spring", stiffness: 30, damping: 14 },
-      opacity: { duration: 0.8 },
-      scale: { type: "spring", stiffness: 30, damping: 14 },
-    },
-  }),
+  animate: (direction: number) => {
+    return {
+      x: [
+        direction > 0 ? "100%" : "-100%",
+        direction > 0 ? "100%" : "-100%",
+        "0%",
+        "0%",
+      ],
+      opacity: 1,
+      scale: [0.9, 0.9, 0.9, 1],
+      transition: {
+        type: "ease-in-out",
+        duration: 4.4,
+      },
+    };
+  },
+  exit: (direction: number) => {
+    return {
+      x: ["0%", "0%", direction > 0 ? "-100%" : "100%"],
+      opacity: 1,
+      scale: [1, 0.9, 0.9],
+      transition: {
+        type: "ease-in-out",
+        duration: 3,
+      },
+    };
+  },
 };
 
 const Slider = () => {
