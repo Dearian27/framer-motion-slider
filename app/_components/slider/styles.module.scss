@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  height: 100vh;
+  background-color: yellow;
+  overflow-y: hidden;
+  .slideshow {
+    margin: auto;
+    width: 100vw;
+    position: relative;
+
+    aspect-ratio: calc(16/9);
+    overflow: hidden;
+    border-radius: 16px;
+  }
+  
+  button {
+    padding: 16px;
+    font-size: 18px;
+    aspect-ratio: 1;
+    border-radius: 32px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+  }
+  button:hover {
+    background-color: #24242e;
+  }
+  .next {
+    position: absolute;
+    z-index: 10;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .prev {
+    position: absolute;
+    z-index: 10;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
